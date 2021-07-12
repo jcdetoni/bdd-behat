@@ -1,0 +1,23 @@
+default:
+  extensions:
+    Behat\MinkExtension:
+      base_url: http://localhost:8000/
+      goutte: ~
+      selenium2:
+        browser: firefox
+        wd_host: "http://localhost:4444/wd/hub"
+  autoload:
+    '': '%paths.base%/tests/features/bootstrap'
+  suites:
+    calculadora_features_back_end:
+      paths: [ '%paths.base%/tests/features/' ]
+      filters:
+        tags: '@unidade'
+      contexts:
+          - SomarPositivosMenoresDe100Context
+    calculadora_features_web:
+      paths: [ '%paths.base%/tests/features/' ]
+      filters:
+        tags: '@web'
+      contexts:
+        - InterfaceWebContext

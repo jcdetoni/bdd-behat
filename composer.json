@@ -1,0 +1,30 @@
+{
+    "name": "jeancesardetoni/bdd-behat",
+    "description": "Teste com BDD em PHP",
+    "autoload": {
+        "psr-4": {
+            "MySys\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Jean Cesar Detoni",
+            "email": "prog11@ixcsoft.com.br"
+        }
+    ],
+    "require-dev": {
+        "behat/behat": "^3.8",
+        "behat/mink": "^1.8",
+        "phpunit/phpunit": "^9.5",
+        "matthiasnoback/behat-expect-exception": "^0.3.0",
+        "behat/mink-goutte-driver": "^1.2",
+        "behat/mink-selenium2-driver": "^1.4",
+        "behat/mink-extension": "^2.3"
+    },
+    "require": {
+        "aura/router": "^3.1",
+        "twig/twig": "^3.3",
+        "laminas/laminas-diactoros": "^2.6",
+        "ext-json": "*"
+    }
+}

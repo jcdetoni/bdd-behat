@@ -1,0 +1,52 @@
+<h1>Super calculadora - Soma de 0 a 100</h1>
+
+<form id="form-calc" action="" method="post" onsubmit="return false">
+    <label for="num1">Numero 1: </label>
+    <input type="number" name="num1" id="num1" value="0">
+    <br>
+    <label for="num2">Numero 2: </label>
+    <input type="number" name="num2" id="num2" value="0">
+    <br>
+    <button id="calcular" type="submit">Somar</button>
+    <br>
+</form>
+
+<label for="content">Resultado: </label>
+<textarea id="content" name="content" style="width: 200px; height: 100px; border: 1px solid #19609e; border-radius: 2px"></textarea>
+
+<script type="application/javascript">
+    window.addEventListener( "load", function () {
+        function sendData() {
+            const XHR = new XMLHttpRequest();
+            const FD = new FormData( form );
+            XHR.addEventListener( "load", function(event) {
+                console.log(event.target.responseText)
+                let data = JSON.parse(event.target.responseText)
+                if(data.status){
+                    document.getElementById('content').innerText = data.response;
+                }
+                else {
+                    document.getElementById('content').innerText = data.message;
+                }
+            } );
+            XHR.addEventListener( "error", function( event ) {
+                alert( 'Oops! Something went wrong.' );
+            } );
+            XHR.open( "POST", "/calculadora/somar-positivo-menor-que-cem" );
+            XHR.send( FD );
+        }
+
+        const form = document.getElementById( "form-calc" );
+
+        form.addEventListener( "submit", function ( event ) {
+            event.preventDefault();
+        } );
+
+        document.getElementById('calcular').addEventListener('click', () => {
+            sendData();
+        })
+
+    } );
+
+
+</script>
